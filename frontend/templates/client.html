@@ -1,0 +1,74 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Registration form</title>
+</head>
+<body>
+    <h1>Registration Form</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <label>Patient Code:</label>
+        <input type="text" name="patient_code" required><br>
+
+        <label>Patient Name:</label>
+        <input type="text" name="patient_name" required><br>
+
+        <label>Age:</label>
+        <input type="number" name="age" required><br>
+
+        <label>DOB:</label>
+        <input type="number" name="dob" required><br>
+
+        <label>Gender:</label>
+        <select name="gender">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select><br>
+
+        <label>Father Name:</label>
+        <input type="text" name="father_name"><br>
+
+        <label>Husband Name:</label>
+        <input type="text" name="husband_name"><br>
+
+        <label>Disease:</label>
+        <input type="text" name="disease"><br>
+
+        <label>Blood Group:</label>
+        <input type="text" name="blood_group"><br>
+
+        <label>Address:</label>
+        <textarea name="address"></textarea><br>
+
+        <label>Mobile No:</label>
+        <input type="text" name="mobile_no" required><br>
+
+
+        <label>Email:</label>
+        <input type="email" name="email"><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <h2>Registered clients</h2>
+    <table border="1">
+        <tr>
+            <th>Patient Code</th>
+            <th>Patient Name</th>
+            <th>Age</th>
+            <th>Gender</th>
+        </tr>
+        {% for client in clients %}
+        <tr>
+            <td>{{ client.patient_code }}</td>
+            <td>{{ client.patient_name }}</td>
+            <td>{{ client.age }}</td>
+            <td>{{ client.gender }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
+
